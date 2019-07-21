@@ -1,4 +1,4 @@
-#pwdmkr v5b1
+#pwdmkr v5b2
 import sys
 sys.dont_write_bytecode = True
 import random
@@ -17,15 +17,15 @@ parser.add_argument('-dl', action='store', dest='delimiter_len', help='Length be
 args = parser.parse_args()
 #print(args.accumulate(args.integers))
 
-version = '5b1'
+version = '5b2'
 
 
 config = {
 	"len": 16,
 	"mode": "both",
 	"delimiter": "",
-   "delimiter_len": 0,
-   "source": []
+    "delimiter_len": 0,
+    "source": []
 }
 
 #write_config
@@ -33,10 +33,6 @@ config["len"] = int(args.length)
 config["mode"] = args.mode
 config["delimiter"] = args.delimiter
 config["delimiter_len"] = int(args.delimiter_len)
-
-#choice = None
-#a = None
-#length = 5
 
 
 def gen_pwd(source, max):
@@ -48,34 +44,11 @@ def gen_pwd(source, max):
 
 def main():
 	print("PYTHON PASSWORD MAKER")
-	#get_config_old
-#	print("Choose Lenght of your password(defualt 16): ")
-#	length = raw_input()
-#	if length != "":
-#		config["len"] = int(length)
-	
-#	print("What type of password you want to get: letters only, numbers only or both?(l/n/b) (default both)")
-#	choice = raw_input()
-
-#	config["source"] = []
 
 	if config["mode"] in ['l', 'letters', 'both', 'b']:
 		config["source"] += string.letters
 	if config["mode"] in ['n', 'nummbers', 'both', 'b']:
 		config["source"] += ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] 
-
-#	print("Choose delimiter: ")
-#	delimiter = raw_input()
-
-#	if delimiter != '':
-#		config["delimiter"] = delimiter
-	
-#	print("Choose delimiter length: ")
-#	delimiter_len = raw_input()
-
-#	if delimiter_len != '':
-#		config["delimiter_len"] = int(delimiter_len)
-
 
 	#gen_pwd
 	p = gen_pwd(config["source"], config["len"])
