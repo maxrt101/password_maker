@@ -5,6 +5,7 @@
  -Python =< 2.7  
 
 Python modules:  
+ -os  
  -sys  
  -random  
  -string  
