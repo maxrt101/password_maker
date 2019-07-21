@@ -1,4 +1,4 @@
-#pwdmkr v5.2 by maxrt101
+#pwdmkr v5.3 by maxrt101
 import os
 import sys
 sys.dont_write_bytecode = True
@@ -21,7 +21,7 @@ parser.add_argument('-dl', action='store', dest='delimiter_len', help='Length be
 
 args = parser.parse_args()
 
-version = '5.2'
+version = '5.3'
 
 config = {
 	"len": 16,
@@ -37,7 +37,7 @@ config["delimiter"] = args.delimiter
 config["delimiter_len"] = int(args.delimiter_len)
 
 
-def gen_pwd(source, max):
+def gen_src(source, max):
 	a = ""
 	for i in range(0, max):
 		a += random.choice(source)
@@ -50,24 +50,24 @@ def main():
 	if config["mode"] in ['n', 'nummbers', 'both', 'b']:
 		config["source"] += ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] 
 
-	p = gen_pwd(config["source"], config["len"])
-	p2 = reduce((lambda x, y: x + config["delimiter"] + y if ((len(x) + 1) % (config["delimiter_len"] + 1) == 0)  else x + y), list(p))
-	print(p2)
+	src = gen_src(config["source"], config["len"])
+	pwd = reduce((lambda x, y: x + config["delimiter"] + y if ((len(x) + 1) % (config["delimiter_len"] + 1) == 0)  else x + y), list(src))
+	print(pwd)
 
-	if args.s == True and args.fs == True:
+	if args.s and args.fs:
 		print('''ERROR: Arguments -s and -fs can't be used together''')
 	else:	
-		if args.s == True or args.fs == True:
-			if os.path.isfile(args.file) == True and args.s == True:
+		if args.s or args.fs:
+			if os.path.isfile(args.file) and args.s:
 				print('ERROR: File {} already exists'.format(args.file))
 			else:
 				pwdfile = open(args.file, 'w')
-				pwdfile.write(p2)
+				pwdfile.write(pwd)
 				pwdfile.close()
 
 
 
-if args.v == True:
+if args.v:
 	print('pwdmkr v{} (c)2019 maxrt101'.format(version))
 else: 
 	main()
