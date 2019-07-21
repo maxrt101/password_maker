@@ -1,16 +1,35 @@
- # Python password maker(generator)
+# Python password maker(generator)
 
-### Requirments:
+### Installation:
+1.[Download](https://github.com/maxrt101/python_password_maker/archive/master.zip) or [clone](https://github.com/maxrt101/python_password_maker) python password maker.  
+2.Make sure you have **python 2.7** and theese installed:  
+ - os  
+ - sys  
+ - random  
+ - string  
+ - argparse  
+ - functools  
 
- -Python =< 2.7  
+3.Run (See usage)  
 
-Python modules:  
- -os  
- -sys  
- -random  
- -string  
- -argparse  
- -functools  
+### Usage:
+`python pwdmkr.txt [-h] [-v] [-s] [-fs] [-f FILE] [-l LENGTH] [-m MODE] [-d DELIMITER] [-dl DELIMITER_LEN]` or  
+`./pwdmkr.txt [-h] [-v] [-s] [-fs] [-f FILE] [-l LENGTH] [-m MODE] [-d DELIMITER] [-dl DELIMITER_LEN]`  
+
+**Note**: You can't use -s and -fs in the same time
+
+### Arguments:
+**-h** - Help. Display help message and exit  
+**-v** - Version. Display version and exit  
+**-s** - Save password into file  
+**-fs** - Force save file  
+**-f** - File name. Default password.txt  
+
+**-l** - Length. Lenght of password (without delimiters). Default 16  
+**-m** - Mode. Mode of generating password: l - letters, - n - numbers, b - both. Default b  
+**-d** - Delimiter. Default none  
+**-dl** - Delimiter length. Default 0
+
 
 ### Usage examples:
  `./pwdmkr.py`  
