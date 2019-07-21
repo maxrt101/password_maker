@@ -1,4 +1,6 @@
  # Python password maker(generator)
+ 
+ Pwdmkr version 4 with old cli
 
 ### Requirments:
 
