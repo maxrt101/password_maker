@@ -13,7 +13,7 @@ Python modules:
 
 ### Usage examples:
  ./pwdmkr.py  
- ./pwdmkr.py -m l
+ ./pwdmkr.py -m l  
  ./pwdmkr.py -d - -dl 4
  ./pwdmkr.py -l 32 -m l  
  ./pwdmkr.py -l 16 -m b -d - -dl 4  
