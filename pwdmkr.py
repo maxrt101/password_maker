@@ -1,4 +1,4 @@
-#pwdmkr v5 by maxrt101
+#pwdmkr v5.1 by maxrt101
 import sys
 sys.dont_write_bytecode = True
 import random
@@ -9,14 +9,17 @@ from functools import reduce
 
 parser = argparse.ArgumentParser(description='''Python password maker. Example: ./pwdmkr.py  -l 16  -m b  -d -  -dl 4 ''')
 parser.add_argument('-v', action='store_true', help='Display version and exit')
+parser.add_argument('-s', action='store_true', help='Save password to file')
+parser.add_argument('-f', action='store', dest='file', help='Destination file to save', default='password.txt')
 parser.add_argument('-l', action='store', dest='length', help='Length of password', default=16)
 parser.add_argument('-m', action='store', dest='mode', help='Mode: letters only(l), numbers only(n) or both(b)', default='b')
 parser.add_argument('-d', action='store', dest='delimiter', help='Delimiter', default='')
 parser.add_argument('-dl', action='store', dest='delimiter_len', help='Length between delimiters', default=0)
 
+
 args = parser.parse_args()
 
-version = '5'
+version = '5.1'
 
 config = {
 	"len": 16,
@@ -48,6 +51,11 @@ def main():
 	p = gen_pwd(config["source"], config["len"])
 	p2 = reduce((lambda x, y: x + config["delimiter"] + y if ((len(x) + 1) % (config["delimiter_len"] + 1) == 0)  else x + y), list(p))
 	print(p2)
+
+	if args.s == True:
+		pwdfile = open(args.file, 'w')
+		pwdfile.write(p2)
+		pwdfile.close()
 
 
 if args.v == True:
