@@ -25,7 +25,7 @@
 **-f** - File name. Default password.txt  
 
 **-l** - Length. Lenght of password (without delimiters). Default 16  
-**-m** - Mode. Mode of generating password: l - letters, n - numbers, s - symbols(can be combined to form ls or ln ol sn). Default ln  
+**-m** - Mode. Mode of generating password: l - letters, n - numbers, s - symbols(can be combined to form `ls` or `ln` or `sn`). Default `ln`  
 **-d** - Delimiter. Default none  
 **-dl** - Delimiter length. Default 0
 
