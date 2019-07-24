@@ -25,19 +25,20 @@
 **-f** - File name. Default password.txt  
 
 **-l** - Length. Lenght of password (without delimiters). Default 16  
-**-m** - Mode. Mode of generating password: l - letters, - n - numbers, b - both. Default b  
+**-m** - Mode. Mode of generating password: l - letters, n - numbers, s - symbols(can be combined to form ls or ln ol sn). Default ln  
 **-d** - Delimiter. Default none  
 **-dl** - Delimiter length. Default 0
 
 
 ### Usage examples:
- `./pwdmkr.py`  
- `./pwdmkr.py -m l`  
- `./pwdmkr.py -d - -dl 4`  
- `./pwdmkr.py -l 32 -m l`  
- `./pwdmkr.py -l 16 -m b -d - -dl 4`  
- `./pwdmkr.py -l 32 -m b -d - -dl 8`  
- `./pwdmkr.py -l 12 -m n -d '#' -dl 2`  
- `./pwdmkr.py -l 1028 - m n -d . -dl 64`  
- `./pwdmkr.py -l 12 -m n -d . -dl 3`  
- `./pwdmkr.py -l 10000 | lolcat`  
+ `python pwdmkr.py`  
+ `python pwdmkr.py -m l`  
+ `python pwdmkr.py -d - -dl 4`  
+ `python pwdmkr.py -l 32 -m l`  
+ `python pwdmkr.py -l 32 -m s`  
+ `python pwdmkr.py -l 32 -m ns -d - -dl 4`
+ `python pwdmkr.py -l 16 -m ln -d - -dl 8`    
+ `python pwdmkr.py -l 12 -m n -d '#' -dl 2`  
+ `python pwdmkr.py -l 1028 - m n -d . -dl 64`  
+ `python pwdmkr.py -l 12 -m n -d . -dl 3`  
+ `python pwdmkr.py -l 10000 | lolcat`  
