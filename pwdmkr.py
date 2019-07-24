@@ -1,4 +1,4 @@
-	#pwdmkr v5.31 by maxrt101
+#pwdmkr v6.0b3 by maxrt101
 import os
 import sys
 sys.dont_write_bytecode = True
@@ -7,21 +7,19 @@ import string
 import argparse
 from functools import reduce
 
-
-parser = argparse.ArgumentParser(description='''Python password maker. Example: python pwdmkr.py  -l 16  -m b  -d -  -dl 4 ''')
+parser = argparse.ArgumentParser(description='''Python password maker. Example: python pwdmkr.py  -l 16  -m ln  -d -  -dl 4 ''')
 parser.add_argument('-v', action='store_true', help='Display version and exit')
 parser.add_argument('-s', action='store_true', help='Save password to file')
 parser.add_argument('-fs', action='store_true', help='Force save password to file')
 parser.add_argument('-f', action='store', dest='file', type=str,help='Destination file to save', default='password.txt')
 parser.add_argument('-l', action='store', dest='length',type=int, help='Length of password', default=16)
-parser.add_argument('-m', action='store', dest='mode', type=str, help='Mode: letters only(l), numbers only(n) or both(b)', default='b')
+parser.add_argument('-m', action='store', dest='mode', type=str, help='Mode: letters only(l), numbers only(n), symbols(s)(e.g. ln, s, ns, lns)', default='ln')
 parser.add_argument('-d', action='store', dest='delimiter', help='Delimiter', default='')
 parser.add_argument('-dl', action='store', dest='delimiter_len', type=int, help='Length between delimiters', default=0)
-
-
+	
 args = parser.parse_args()
 
-version = '5.31'
+version = '6.0b3'
 
 config = {
 	"len": 16,
@@ -31,10 +29,10 @@ config = {
     "source": []
 }
 
-config["len"] = int(args.length)
+config["len"] = args.length
 config["mode"] = args.mode
 config["delimiter"] = args.delimiter
-config["delimiter_len"] = int(args.delimiter_len)
+config["delimiter_len"] = args.delimiter_len
 
 
 def gen_src(source, max):
@@ -43,12 +41,17 @@ def gen_src(source, max):
 		a += random.choice(source)
 	return a
 
-
 def main():
-	if config["mode"] in ['l', 'letters', 'both', 'b']:
+	if 'l' in list(config["mode"]):
 		config["source"] += string.letters
-	if config["mode"] in ['n', 'nummbers', 'both', 'b']:
-		config["source"] += ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] 
+	if 'n'  in list(config["mode"]):
+		config["source"] += ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+	if 's' in list(config["mode"]):
+		config["source"] += ['~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '<', '>', '/', '?', '[', ']', '{', '}', '.', ',', '|', ':', ';']
+
+	if config["source"] == []:
+		print('ERROR: bad mode(-m)')
+		exit()
 
 	src = gen_src(config["source"], config["len"])
 	pwd = reduce((lambda x, y: x + config["delimiter"] + y if ((len(x) + 1) % (config["delimiter_len"] + 1) == 0)  else x + y), list(src))
