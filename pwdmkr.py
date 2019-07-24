@@ -1,4 +1,4 @@
-#pwdmkr v5.3 by maxrt101
+	#pwdmkr v5.31 by maxrt101
 import os
 import sys
 sys.dont_write_bytecode = True
@@ -8,20 +8,20 @@ import argparse
 from functools import reduce
 
 
-parser = argparse.ArgumentParser(description='''Python password maker. Example: ./pwdmkr.py  -l 16  -m b  -d -  -dl 4 ''')
+parser = argparse.ArgumentParser(description='''Python password maker. Example: python pwdmkr.py  -l 16  -m b  -d -  -dl 4 ''')
 parser.add_argument('-v', action='store_true', help='Display version and exit')
 parser.add_argument('-s', action='store_true', help='Save password to file')
 parser.add_argument('-fs', action='store_true', help='Force save password to file')
-parser.add_argument('-f', action='store', dest='file', help='Destination file to save', default='password.txt')
-parser.add_argument('-l', action='store', dest='length', help='Length of password', default=16)
-parser.add_argument('-m', action='store', dest='mode', help='Mode: letters only(l), numbers only(n) or both(b)', default='b')
+parser.add_argument('-f', action='store', dest='file', type=str,help='Destination file to save', default='password.txt')
+parser.add_argument('-l', action='store', dest='length',type=int, help='Length of password', default=16)
+parser.add_argument('-m', action='store', dest='mode', type=str, help='Mode: letters only(l), numbers only(n) or both(b)', default='b')
 parser.add_argument('-d', action='store', dest='delimiter', help='Delimiter', default='')
-parser.add_argument('-dl', action='store', dest='delimiter_len', help='Length between delimiters', default=0)
+parser.add_argument('-dl', action='store', dest='delimiter_len', type=int, help='Length between delimiters', default=0)
 
 
 args = parser.parse_args()
 
-version = '5.3'
+version = '5.31'
 
 config = {
 	"len": 16,
@@ -54,6 +54,9 @@ def main():
 	pwd = reduce((lambda x, y: x + config["delimiter"] + y if ((len(x) + 1) % (config["delimiter_len"] + 1) == 0)  else x + y), list(src))
 	print(pwd)
 
+	if args.file == True and args.s != True or args.file == True and args.fs != True:
+		print('''NOTE: -f won't work without -s or -fs''')
+
 	if args.s and args.fs:
 		print('''ERROR: Arguments -s and -fs can't be used together''')
 	else:	
@@ -61,13 +64,18 @@ def main():
 			if os.path.isfile(args.file) and args.s:
 				print('ERROR: File {} already exists'.format(args.file))
 			else:
-				pwdfile = open(args.file, 'w')
+				pwdfile = open(args.file, 'w')	
 				pwdfile.write(pwd)
 				pwdfile.close()
 
 
-
 if args.v:
 	print('pwdmkr v{} (c)2019 maxrt101'.format(version))
+elif args.length > 250000:
+	print('ERROR: Length > 250000, terminating')
+	exit()
+elif len(args.delimiter) > 100:
+	print('ERROR: delimiter > 100, terminating')
+	exit()
 else: 
 	main()
