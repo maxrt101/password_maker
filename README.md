@@ -13,8 +13,7 @@
 3.Run (See usage)  
 
 ### Usage:
-`python pwdmkr.txt [-h] [-v] [-s] [-fs] [-f FILE] [-l LENGTH] [-m MODE] [-d DELIMITER] [-dl DELIMITER_LEN]` or  
-`./pwdmkr.txt [-h] [-v] [-s] [-fs] [-f FILE] [-l LENGTH] [-m MODE] [-d DELIMITER] [-dl DELIMITER_LEN]`  
+`python pwdmkr.txt [-h] [-v] [-s] [-fs] [-f FILE] [-l LENGTH] [-m MODE] [-d DELIMITER] [-dl DELIMITER_LEN]`   
 
 **Note**: You can't use -s and -fs in the same time
 
