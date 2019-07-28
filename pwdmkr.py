@@ -1,4 +1,4 @@
-#pwdmkr v6.2 by maxrt101
+#pwdmkr v6.3 by maxrt101
 import os
 import sys
 sys.dont_write_bytecode = True
@@ -16,17 +16,17 @@ parser.add_argument('-l', action='store', dest='length',type=int, help='Length o
 parser.add_argument('-m', action='store', dest='mode', type=str, help='Mode: letters only(l), numbers only(n), symbols(s)(e.g. ln, s, ns, lns)', default='ln')
 parser.add_argument('-d', action='store', dest='delimiter', help='Delimiter', default='')
 parser.add_argument('-dl', action='store', dest='delimiter_len', type=int, help='Length between delimiters', default=0)
-	
-args = parser.parse_args()
 
-version = '6.2'
+args = parser.parse_args()
 
 config = {
 	"len": args.length,
 	"mode": args.mode,
 	"delimiter": args.delimiter,
     "delimiter_len": args.delimiter_len,
-    "source": []
+    "source": [],
+    "nm": 2,
+    "version": '6.3'
 }
 
 def gen_src(source, max):
@@ -38,10 +38,12 @@ def gen_src(source, max):
 def main():
 	if 'l' in list(config["mode"]):
 		config["source"] += string.letters
-	if 'n'  in list(config["mode"]):
-		config["source"] += ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] * 2
+		config["nm"] += 1
 	if 's' in list(config["mode"]):
 		config["source"] += ['~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '<', '>', '/', '?', '[', ']', '{', '}', '.', ',', '|', ':', ';']
+		config["nm"] += 1
+	if 'n'  in list(config["mode"]):
+		config["source"] += ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] * config["nm"]	
 
 	if config["source"] == []:
 		print('ERROR: bad mode(-m)')
@@ -67,12 +69,12 @@ def main():
 
 
 if args.v:
-	print('pwdmkr v{} (c)2019 maxrt101'.format(version))
+	print('pwdmkr v{} (c)2019 maxrt101'.format(config["version"]))
 elif args.length > 250000:
-	print('ERROR: Length > 250000, terminating')
+	print('ERROR: Length > 250000, terminating...')
 	exit()
 elif len(args.delimiter) > 100:
-	print('ERROR: delimiter > 100, terminating')
+	print('ERROR: delimiter > 100, terminating...')
 	exit()
 else: 
 	main()
