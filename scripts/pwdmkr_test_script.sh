@@ -51,4 +51,3 @@ echo 'file.txt'
 cat file.txt
 rm file.txt
 echo ' '
-
