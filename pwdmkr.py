@@ -1,4 +1,4 @@
-#pwdmkr v6.1 by maxrt101
+#pwdmkr v6.2 by maxrt101
 import os
 import sys
 sys.dont_write_bytecode = True
@@ -7,7 +7,7 @@ import string
 import argparse
 from functools import reduce
 
-parser = argparse.ArgumentParser(description='''Python password maker. Example: python pwdmkr.py  -l 16  -m ln  -d -  -dl 4 ''')
+parser = argparse.ArgumentParser(description='Python password maker. Example: python pwdmkr.py  -l 16  -m ln  -d -  -dl 4 ')
 parser.add_argument('-v', action='store_true', help='Display version and exit')
 parser.add_argument('-s', action='store_true', help='Save password to file')
 parser.add_argument('-fs', action='store_true', help='Force save password to file')
@@ -19,7 +19,7 @@ parser.add_argument('-dl', action='store', dest='delimiter_len', type=int, help=
 	
 args = parser.parse_args()
 
-version = '6.1'
+version = '6.2'
 
 config = {
 	"len": args.length,
@@ -39,7 +39,7 @@ def main():
 	if 'l' in list(config["mode"]):
 		config["source"] += string.letters
 	if 'n'  in list(config["mode"]):
-		config["source"] += ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		config["source"] += ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] * 2
 	if 's' in list(config["mode"]):
 		config["source"] += ['~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '<', '>', '/', '?', '[', ']', '{', '}', '.', ',', '|', ':', ';']
 
@@ -51,7 +51,7 @@ def main():
 	pwd = reduce((lambda x, y: x + config["delimiter"] + y if ((len(x) + 1) % (config["delimiter_len"] + 1) == 0)  else x + y), list(src))
 	print(pwd)
 
-	if args.file == True and args.s != True or args.file == True and args.fs != True:
+	if args.file != 'password.txt' and (args.s == False and args.fs == False):
 		print('''NOTE: -f won't work without -s or -fs''')
 
 	if args.s and args.fs:
