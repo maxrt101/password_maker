@@ -1,4 +1,4 @@
-#pwdmkr v6.0 by maxrt101
+#pwdmkr v6.1 by maxrt101
 import os
 import sys
 sys.dont_write_bytecode = True
@@ -19,21 +19,15 @@ parser.add_argument('-dl', action='store', dest='delimiter_len', type=int, help=
 	
 args = parser.parse_args()
 
-version = '6.0'
+version = '6.1'
 
 config = {
-	"len": 16,
-	"mode": "ln",
-	"delimiter": "",
-    "delimiter_len": 0,
+	"len": args.length,
+	"mode": args.mode,
+	"delimiter": args.delimiter,
+    "delimiter_len": args.delimiter_len,
     "source": []
 }
-
-config["len"] = args.length
-config["mode"] = args.mode
-config["delimiter"] = args.delimiter
-config["delimiter_len"] = args.delimiter_len
-
 
 def gen_src(source, max):
 	a = ""
