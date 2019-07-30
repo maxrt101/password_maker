@@ -1,4 +1,4 @@
-#pwdmkr pytester v2.0b1
+#pwdmkr pytester v2.0b2
 import os
 import sys 
 sys.dont_write_bytecode = True
@@ -20,12 +20,9 @@ class colors:
 	OKGREEN = '\033[92m'
 	WARNING = '\033[93m'
 	FAIL = '\033[91m'
-#	HEADER = '\033[95m'
-#	BOLD = '\033[1m'
-#	UNDERLINE = '\033[4m'
 
 test_type = 'PY'
-version = '2.0b1'
+version = '2.0b2'
 
 c_fail = colors.WHITE + '[' + colors.FAIL + 'FAIL' + colors.WHITE + ']'
 c_ok = colors.WHITE + '[' + colors.OKGREEN + 'OK' + colors.WHITE + ']'
@@ -33,7 +30,6 @@ c_ok = colors.WHITE + '[' + colors.OKGREEN + 'OK' + colors.WHITE + ']'
 test_d = ' ' * 101
 
 def main(name):
-	#system_call(['python', name, '-v'])
 	test_v = check_output(['python', name, '-v'])
 	sys.stdout.write(test_v)
 	if len(test_v) <= 32:
@@ -43,15 +39,13 @@ def main(name):
 
 	print('\nmodes:')
 
-	#system_call(['python', name])
-	sys.stdout.write(test_v)
-	test_black = check_output(['python', name])
-	if len(test_black) == 17:
+	test_blank = check_output(['python', name])
+	sys.stdout.write(test_blank)
+	if len(test_blank) == 17:
 		print(' ' * 12  +  c_ok)
 	else:
 		print(' ' * 10  + c_fail)
 
-	#system_call(['python', name, '-m', 'l'])
 	test_m = check_output(['python', name, '-m', 'l'])
 	sys.stdout.write(test_m)
 	if len(test_m) == 17:
@@ -59,7 +53,6 @@ def main(name):
 	else:
 		print('m:l' + ' ' * 7  + c_fail)
 
-	#system_call(['python', name, '-m', 'n'])
 	test_m = check_output(['python', name, '-m', 'n'])
 	sys.stdout.write(test_m)
 	if len(test_m) == 17:
@@ -67,7 +60,6 @@ def main(name):
 	else:
 		print('m:n' + ' ' * 7  + c_fail)
 
-	#system_call(['python', name, '-m', 's'])
 	test_m = check_output(['python', name, '-m', 's'])
 	sys.stdout.write(test_m)
 	if len(test_m) == 17:
@@ -75,7 +67,6 @@ def main(name):
 	else:
 		print('m:s' + ' ' * 9  + c_fail)
 
-	#system_call(['python', name, '-m', 'ln'])
 	test_m = check_output(['python', name, '-m', 'ln'])
 	sys.stdout.write(test_m)
 	if len(test_m) == 17:
@@ -83,7 +74,6 @@ def main(name):
 	else:
 		print('m:ln' + ' ' * 6  + c_fail)
 
-	#system_call(['python', name, '-m', 'ls'])
 	test_m = check_output(['python', name, '-m', 'ls'])
 	sys.stdout.write(test_m)
 	if len(test_m) == 17:
@@ -91,7 +81,6 @@ def main(name):
 	else:
 		print('m:ls' + ' ' * 6  + c_fail)
 
-	#system_call(['python', name, '-m', 'ns'])
 	test_m = check_output(['python', name, '-m', 'ns'])
 	sys.stdout.write(test_m)
 	if len(test_m) == 17:
@@ -99,9 +88,8 @@ def main(name):
 	else:
 		print('m:ns' + ' ' * 6  + c_fail)
 
-	#system_call(['python', name, '-m', 'lns'])
 	test_m = check_output(['python', name, '-m', 'lns'])
-	sys.stdout.dont_write_bytecode(test_m)
+	sys.stdout.write(test_m)
 	if len(test_m) == 17:
 		print('m:lns' + ' ' * 7  + c_ok)
 	else:
@@ -113,10 +101,8 @@ def main(name):
 	python name -l 20 -m lns -d '-' -d 4
 	echo ' '
 	'''
-	
 	print('\nsave test:')
 
-	#system_call(['python', name, '-s'])
 	test_s = check_output(['python', name, '-s'])[:16]
 	print(test_s)
 	if test_s == open('password.txt').read()[:16]:
@@ -124,8 +110,6 @@ def main(name):
 	else:
 		print('s' + ' ' * 9  + c_fail)
 
-	#system_call(['python', name, '-fs'])
-	#if check_output(['python', name, '-fs'])[:16] == open('password.txt').read()[:16]:
 	test_s = check_output(['python', name, '-fs'])[:16]
 	print(test_s)
 	if test_s == open('password.txt').read()[:16]:
@@ -133,8 +117,6 @@ def main(name):
 	else:
 		print('fs' + ' ' * 8  + c_fail)
 
-	#system_call(['python',  name, '-s', '-f', 'file.txt'])
-	#if check_output(['python',  name, '-s', '-f', 'file.txt'])[:16] == open('file.txt').read()[:16]:
 	test_s = check_output(['python',  name, '-s', '-f', 'file.txt'])[:16]
 	print(test_s)
 	if test_s == open('file.txt').read()[:16]:
@@ -174,13 +156,13 @@ def main(name):
 		print('s fs' + ' ' * 6  + c_fail)
 
 	system_call(['python', name, '-l', '250001'])
-	if len(check_output(['python', name, '-l', '250001'])) == 36:
+	if len(check_output(['python', name, '-l', '250001'])) == 36:      #FROM 6.3 - 39
 		print('l' + ' ' * 11  + c_ok)
 	else:
 		print('l' + ' ' * 9  + c_fail)
 
 	system_call(['python', name, '-d', test_d])
-	if len(check_output(['python', name, '-d', test_d])) == 36:
+	if len(check_output(['python', name, '-d', test_d])) == 36:        #FROM 6.3 - 39
 		print('d' + ' ' * 11  + c_ok)
 	else:
 		print('d' + ' ' * 9  + c_fail)
