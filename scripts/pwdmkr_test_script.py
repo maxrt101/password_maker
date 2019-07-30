@@ -1,4 +1,4 @@
-#pwdmkr pytester v2.0b2
+#pwdmkr pytester v2.0b3
 import os
 import sys 
 sys.dont_write_bytecode = True
@@ -22,7 +22,7 @@ class colors:
 	FAIL = '\033[91m'
 
 test_type = 'PY'
-version = '2.0b2'
+version = '2.0b3'
 
 c_fail = colors.WHITE + '[' + colors.FAIL + 'FAIL' + colors.WHITE + ']'
 c_ok = colors.WHITE + '[' + colors.OKGREEN + 'OK' + colors.WHITE + ']'
@@ -95,12 +95,23 @@ def main(name):
 	else:
 		print('m:lns' + ' ' * 5  + c_fail)
 
-	'''
-	echo 'all test'
-	python name -l 16 -m ln -d - -dl 4
-	python name -l 20 -m lns -d '-' -d 4
-	echo ' '
-	'''
+
+	print('\ncombined test:')
+
+	test_cmb = check_output(['python', name, '-l', '16', '-m', 'ln', '-d', '-', '-dl', '4'])
+	sys.stdout.write(test_cmb)
+	if len(test_cmb) == 20:
+		print('cmb' + ' ' * 9  + c_ok)
+	else:
+		print('cmb' + ' ' * 7  + c_fail)
+
+	test_cmb = check_output(['python', name, '-l', '20', '-m', 'lns', '-d', '-', '-dl', '4'])
+	sys.stdout.write(test_cmb)
+	if len(test_cmb) == 25:
+		print('cmb' + ' ' * 9  + c_ok)
+	else:
+		print('cmb' + ' ' * 7  + c_fail)
+
 	print('\nsave test:')
 
 	test_s = check_output(['python', name, '-s'])[:16]
@@ -156,13 +167,13 @@ def main(name):
 		print('s fs' + ' ' * 6  + c_fail)
 
 	system_call(['python', name, '-l', '250001'])
-	if len(check_output(['python', name, '-l', '250001'])) == 36:      #FROM 6.3 - 39
+	if len(check_output(['python', name, '-l', '250001'])) == 39:
 		print('l' + ' ' * 11  + c_ok)
 	else:
 		print('l' + ' ' * 9  + c_fail)
 
 	system_call(['python', name, '-d', test_d])
-	if len(check_output(['python', name, '-d', test_d])) == 36:        #FROM 6.3 - 39
+	if len(check_output(['python', name, '-d', test_d])) == 39:
 		print('d' + ' ' * 11  + c_ok)
 	else:
 		print('d' + ' ' * 9  + c_fail)
