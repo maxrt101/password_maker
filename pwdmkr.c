@@ -26,6 +26,7 @@ void gen_src(){
 		}
 	} else {
 		mode = "b";
+		gen_src();
 	}
 }
 
@@ -51,10 +52,10 @@ void main(int argc, char *argv[]) {
 			while ((option = getopt(argc, argv, ":hvl:m:d:")) != -1) {
 				switch (option) {
 					case 'h': 
-						printf("pwdmkr v0.1\nUsage: encrypt [-h] [-v] [-l LENGTH] [-m MODE]\n\nOptions:\n\t-h - Displays this help massage\n\t-v Displays version and exits\n\t-l - Length of password. Default 16\n\t-m - Mode. Can be l(letters), n(numbers) or b(both)\n");
+						printf("pwdmkr v0.11\nUsage: encrypt [-h] [-v] [-l LENGTH] [-m MODE]\n\nOptions:\n\t-h - Displays this help massage\n\t-v Displays version and exits\n\t-l - Length of password. Default 16\n\t-m - Mode. Can be l(letters), n(numbers) or b(both)\n");
 						exit(0);
 					case 'v':
-						printf("pwdmkr v0.1 (c)2019 maxrt101\n");
+						printf("pwdmkr v0.11 (c)2019 maxrt101\n");
 						exit(0);
 					case 'l':
 						sscanf(optarg, "%d", &len);
