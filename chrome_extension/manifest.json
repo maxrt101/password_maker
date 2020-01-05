@@ -1,0 +1,21 @@
+{
+    "name": "Password Generator",
+    "version": "0.1",
+    "description": "Chrome extension for genrating passwords",
+    "permissions": ["storage"],
+    "options_page": "options.html",
+    "content_scripts": [
+	  {
+	    "matches": [
+	      "<all_urls>"
+	    ],
+	    "js": ["libraries/jquery.min.js"]
+	  }
+	],
+    "browser_action": {
+        "title": "home",
+        "default_popup": "popup.html",
+        "default_icon": "icons/icon_white512.png"
+    },
+    "manifest_version": 2
+  }
