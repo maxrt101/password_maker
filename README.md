@@ -32,20 +32,6 @@
   
 **--unrestricted** - Unrestricted mode. Surpasses any restrictions, like delimiter length, and overall length  
   
-  
-### Usage examples:
- `python pwdmkr.py`  
- `python pwdmkr.py -m l`  
- `python pwdmkr.py -d - -dl 4`  
- `python pwdmkr.py -l 32 -m l`  
- `python pwdmkr.py -l 32 -m s`  
- `python pwdmkr.py -l 32 -m ns -d - -dl 4`
- `python pwdmkr.py -l 16 -m ln -d - -dl 8`    
- `python pwdmkr.py -l 12 -m n -d '#' -dl 2`  
- `python pwdmkr.py -l 1028 - m n -d . -dl 64`  
- `python pwdmkr.py -l 12 -m n -d . -dl 3`  
- `python pwdmkr.py -l 10000 | lolcat`  
-
 
 ## JS password maker  
 ### Installation:  
