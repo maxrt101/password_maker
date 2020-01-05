@@ -73,7 +73,7 @@ def main():
 
 
 if args.v:
-	print('pwdmkr v{} (c)2019 maxrt101'.format(config["version"]))
+	print('pwdmkr v{} (c)2020 maxrt101'.format(config["version"]))
 elif args.length > 250000 and (args.unrestricted == False):
 	print('ERROR: Length > 250000, terminating')
 	exit()
