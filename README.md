@@ -62,3 +62,10 @@ If you want to use `pwdmkr.js` in your html page, you must include it in `<head>
 **-m** - Mode. Mode of generating password: l - letters, n - numbers, b - both. Default b  
 **-d** - Delimiter. Default none  
 **-D** - Delimiter length. Default 1  
+
+## Chrome extension  
+### Installation:
+In order to install pwdmkr chrome extension, you must go to `chrome://extensions/`, enable developer mode and click on 'Load unpacked' then choose chrome_extension folder. That's it.  
+
+### Usage:
+Click on white square with 4 asterisks(\*), labeled 'Password Maker' and press 'Generate password' button  
