@@ -71,7 +71,7 @@ void main(int argc, char *argv[]) {
 						printf("pwdmkr v0.22\nUsage: ./pwdmkr [-h] [-v] [-l LENGTH] [-m MODE]\n\nOptions:\n\t-h - Displays this help massage\n\t-v - Displays version and exits\n\t-l - Length of password. Default 16\n\t-m - Mode. Can be l(letters), n(numbers) or b(both)\n\t-d - Delimiter. Default - none\n\t-D - Delimiter length (interval)\n");
 						exit(0);
 					case 'v':
-						printf("pwdmkr v0.22 (c)2019 maxrt101\n");
+						printf("pwdmkr v0.22 (c)2020 maxrt101\n");
 						exit(0);
 					case 'l':
 						sscanf(optarg, "%d", &len);
