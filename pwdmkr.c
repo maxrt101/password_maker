@@ -39,7 +39,6 @@ void gen_pwd() {
 
 	if (strcmp(delimiter, "n")) {
 		len = len + (len/delimiter_len);
-		printf("%d\n", (len/delimiter_len));
 		delimiter_len = delimiter_len + 1;
 
 		for (i = 0; i < len; i++) {
@@ -64,20 +63,15 @@ void gen_pwd() {
 }
 
 void main(int argc, char *argv[]) {
-	char * argument_arr[argc];
-	for (i = 0; i<argc; i++) {
-		argument_arr[i] = argv[i];
-	}
-
 	if (argc > 1) {
 		for (i = 0; i < argc-1; i++) {
 			while ((option = getopt(argc, argv, ":hvl:m:d:D:")) != -1) {
 				switch (option) {
 					case 'h': 
-						printf("pwdmkr v0.21\nUsage: ./pwdmkr [-h] [-v] [-l LENGTH] [-m MODE]\n\nOptions:\n\t-h - Displays this help massage\n\t-v Displays version and exits\n\t-l - Length of password. Default 16\n\t-m - Mode. Can be l(letters), n(numbers) or b(both)\n\t-d - Delimiter. Default - none\n\t-D - Delimiter length (interval)\n");
+						printf("pwdmkr v0.22\nUsage: ./pwdmkr [-h] [-v] [-l LENGTH] [-m MODE]\n\nOptions:\n\t-h - Displays this help massage\n\t-v Displays version and exits\n\t-l - Length of password. Default 16\n\t-m - Mode. Can be l(letters), n(numbers) or b(both)\n\t-d - Delimiter. Default - none\n\t-D - Delimiter length (interval)\n");
 						exit(0);
 					case 'v':
-						printf("pwdmkr v0.21 (c)2019 maxrt101\n");
+						printf("pwdmkr v0.22 (c)2019 maxrt101\n");
 						exit(0);
 					case 'l':
 						sscanf(optarg, "%d", &len);
