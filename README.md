@@ -64,8 +64,7 @@ If you want to use `pwdmkr.js` in your html page, you must include it in `<head>
 ## C password maker  
 ### Installation:
 1.[Download](https://github.com/maxrt101/password_maker/archive/master.zip) or [clone](https://github.com/maxrt101/password_maker) password maker.  
-2.run `gcc -o pwdmkr pwdmkr.c`  
-3.Run (See usage)  
+2.Run `gcc -o pwdmkr pwdmkr.c`  
 
 ### Usage:
 `./pwdmkr [-h] [-v] [-l LENGTH] [-m MODE]`  
