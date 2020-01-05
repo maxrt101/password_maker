@@ -1,6 +1,6 @@
 # Password maker(generator)
 
-### Python password maker
+## Python password maker
 ### Installation:
 1.[Download](https://github.com/maxrt101/password_maker/archive/master.zip) or [clone](https://github.com/maxrt101/password_maker) password maker.  
 2.Make sure you have **python 2.7** and theese installed:  
@@ -47,7 +47,7 @@
  `python pwdmkr.py -l 10000 | lolcat`  
 
 
-### JS password maker  
+## JS password maker  
 ### Installation:  
 If you want to use `pwdmkr.js` in your html page, you must include it in `<head>`:  
 `<script src="/path/to/script/pwdmkr.js"></script>` (path relatively to `index.php` (or `index.html`, or whatever name you are using))  
@@ -61,7 +61,7 @@ If you want to use `pwdmkr.js` in your html page, you must include it in `<head>
 **delimiter** - Default none  
 **delimiter_length** - Default 0  
 
-### C password maker  
+## C password maker  
 ### Installation:
 1.[Download](https://github.com/maxrt101/password_maker/archive/master.zip) or [clone](https://github.com/maxrt101/password_maker) password maker.  
 2.run `gcc -o pwdmkr pwdmkr.c`  
