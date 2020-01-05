@@ -75,3 +75,5 @@ If you want to use `pwdmkr.js` in your html page, you must include it in `<head>
 **-v** - Version. Display version and exit  
 **-l** - Length. Lenght of password (without delimiters). Default 16  
 **-m** - Mode. Mode of generating password: l - letters, n - numbers, b - both. Default b  
+**-d** - Delimiter. Default none  
+**-D** - Delimiter length. Default 1  
