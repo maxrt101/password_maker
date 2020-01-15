@@ -3,7 +3,7 @@
 ## Python password maker
 ### Installation:
 1.[Download](https://github.com/maxrt101/password_maker/archive/master.zip) or [clone](https://github.com/maxrt101/password_maker) password maker.  
-2.Make sure you have **python 2.7** and theese installed:  
+2.Make sure you have **python 3** and theese installed:  
  - os  
  - sys  
  - random  
