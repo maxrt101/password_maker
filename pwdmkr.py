@@ -1,4 +1,4 @@
-#pwdmkr v6.4 by maxrt101
+#pwdmkr v6.5 by maxrt101
 import os
 import sys
 sys.dont_write_bytecode = True
@@ -21,7 +21,7 @@ parser.add_argument('--unrestricted', action='store_true', help='Surpass any res
 args = parser.parse_args()
 
 config = {
-	"version": '6.4',
+	"version": '6.5',
 	"len": args.length,
 	"mode": args.mode,
 	"delimiter": args.delimiter,
@@ -38,7 +38,7 @@ def gen_src():
 
 def main():
 	if 'l' in list(config["mode"]):
-		config["source"] += string.letters
+		config["source"] += string.ascii_letters
 		config["nm"] += 1
 	if 's' in list(config["mode"]):
 		config["source"] += ['~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '<', '>', '/', '?', '[', ']', '{', '}', '.', ',', '|', ':', ';']
@@ -73,7 +73,7 @@ def main():
 
 
 if args.v:
-	print('pwdmkr v{} (c)2020 maxrt101'.format(config["version"]))
+	print('pwdmkr v{} (c)2019 maxrt101'.format(config["version"]))
 elif args.length > 250000 and (args.unrestricted == False):
 	print('ERROR: Length > 250000, terminating')
 	exit()
