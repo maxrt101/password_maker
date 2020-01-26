@@ -16,7 +16,7 @@
 ### Usage:
 `python pwdmkr.py [-h] [-v] [-s] [-fs] [-f FILE] [-l LENGTH] [-m MODE] [-d DELIMITER] [-dl DELIMITER_LEN]`   
 
-**Note**: You can't use -s and -fs in the same time
+**Note**: You can't use -s and -fs at the same time
 
 ### Arguments:
 **-h** - Help. Display help message and exit  
