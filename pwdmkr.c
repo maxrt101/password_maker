@@ -4,13 +4,13 @@
 #include <string.h>
 #include <unistd.h>
 
-int i, n, x, r_chr;
+int i, r_chr;
 char chr;
 char *src;
 int option;
 int len = 16;
 int delimiter_len = 1;
-char delimiter[16];
+char delimiter[16] = "n";
 char * mode = NULL; 
 char password[1024];
 
@@ -31,7 +31,6 @@ void gen_src(){
 		gen_src();
 	}
 }
-
 
 void gen_pwd() {
 	srand(time(NULL));
@@ -68,10 +67,10 @@ void main(int argc, char *argv[]) {
 			while ((option = getopt(argc, argv, ":hvl:m:d:D:")) != -1) {
 				switch (option) {
 					case 'h': 
-						printf("pwdmkr v0.22\nUsage: ./pwdmkr [-h] [-v] [-l LENGTH] [-m MODE]\n\nOptions:\n\t-h - Displays this help massage\n\t-v - Displays version and exits\n\t-l - Length of password. Default 16\n\t-m - Mode. Can be l(letters), n(numbers) or b(both)\n\t-d - Delimiter. Default - none\n\t-D - Delimiter length (interval)\n");
+						printf("pwdmkr v0.23\nUsage: ./pwdmkr [-h] [-v] [-l LENGTH] [-m MODE] [-d DELIMITER] [-D DELIMITER_LEN]\n\nOptions:\n\t-h - Displays this help massage\n\t-v - Displays version and exits\n\t-l - Length of password. Default 16\n\t-m - Mode. Can be l(letters), n(numbers) or b(both)\n\t-d - Delimiter. Default - none\n\t-D - Delimiter length (interval)\n");
 						exit(0);
 					case 'v':
-						printf("pwdmkr v0.22 (c)2020 maxrt101\n");
+						printf("pwdmkr v0.23 (c)2020 maxrt101\n");
 						exit(0);
 					case 'l':
 						sscanf(optarg, "%d", &len);
@@ -97,4 +96,12 @@ void main(int argc, char *argv[]) {
 	}
 	gen_src();
 	gen_pwd();
+	
+	#ifdef DEBUG
+		printf("DEBUG\nCommand: ");
+		for (i = 0; i < argc; i++) {
+			printf("%s ", argv[i]);
+		}
+		printf("\nlen: %d\nmode: %s\ndelimiter: %s\ndelimiter_len: %d\nsrc: %s\npwd: %s\n", len, mode, delimiter, delimiter_len, src, password);
+	#endif
 }
