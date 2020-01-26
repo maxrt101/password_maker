@@ -53,7 +53,7 @@ If you want to use `pwdmkr.js` in your html page, you must include it in `<head>
 2.Run `gcc -o pwdmkr pwdmkr.c`  
 
 ### Usage:
-`./pwdmkr [-h] [-v] [-l LENGTH] [-m MODE]`  
+`./pwdmkr [-h] [-v] [-l LENGTH] [-m MODE] [-d DELIMITER] [-D DELIMITER_LEN]`  
 
 ### Arguments:  
 **-h** - Help. Display help message and exit  
